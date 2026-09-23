@@ -13,11 +13,8 @@ file = open(args.mails, "r")
 for mail in file:
 
     driver = webdriver.Chrome()
-    driver.get("https://"+args.schoolurl)
-    firstpart = args.schoolurl.split("?")[0]
-    driver.get("https://"+firstpart+"#/basic/userRegistration")
-
-    emailfield = driver.find_element(By.TAG_NAME, "input")
+    driver.get("https://"+args.schoolurl+"/WebUntis/#/basic/userRegistration")
+    emailfield = driver.find_element(By.CSS_SELECTOR, "input.un-input-group__input")
     emailfield.send_keys(mail)
     emailfield.send_keys(Keys.RETURN)
 
